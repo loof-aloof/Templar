@@ -163,6 +163,10 @@ controller.anyButton.onEvent(ControllerButtonEvent.Released, function () {
         . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
         `)
 })
+info.onLifeZero(function () {
+    mySprite.destroy(effects.spray, 500)
+    game.over(false, effects.splatter)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
         otherSprite.destroy(effects.fire, 100)
@@ -332,6 +336,11 @@ mySprite4.y = 80
 mySprite2.follow(mySprite, 30)
 mySprite3.follow(mySprite, 30)
 mySprite4.follow(mySprite, 10)
+game.onUpdate(function () {
+    if (info.score() >= 2000) {
+        game.over(true)
+    }
+})
 game.onUpdateInterval(5000, function () {
     mySprite3 = sprites.create(img`
         . f . . 2 2 2 2 2 . . f . . . . 
