@@ -175,10 +175,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     if (controller.B.isPressed()) {
         otherSprite.x += 40
     }
+    if (false) {
+        otherSprite.x += 40
+        info.changeLifeBy(-1)
+    }
 })
 let mySprite4: Sprite = null
 let mySprite: Sprite = null
 info.setScore(0)
+info.setLife(8)
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b 1 . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b 1 . . . . . . . . . . . . . . 
@@ -324,6 +329,109 @@ let mySprite3 = sprites.create(img`
     `, SpriteKind.Enemy)
 mySprite.setPosition(7, 80)
 mySprite4.y = 80
+mySprite3.x = 200
+mySprite2.x = 200
 mySprite2.follow(mySprite, 30)
 mySprite3.follow(mySprite, 30)
 mySprite4.follow(mySprite, 10)
+game.onUpdateInterval(5000, function () {
+    mySprite3 = sprites.create(img`
+        . f . . 2 2 2 2 2 . . f . . . . 
+        . f f 2 2 2 2 2 2 2 f f . . . . 
+        . f e 2 2 2 2 e 2 2 2 f . . f . 
+        . 2 2 e 2 2 e 2 2 2 2 2 . . f f 
+        . 2 f 5 2 2 f 5 2 2 2 2 . . 2 . 
+        2 2 5 5 2 2 5 5 2 2 2 2 . . 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 . . . 2 
+        2 2 2 f f f f f 2 2 2 . . . . 2 
+        . 2 f f f f f f f 2 2 . . . 2 2 
+        . . 2 2 2 2 2 2 f 2 2 2 . 2 2 . 
+        . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+        . 2 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+        2 2 2 2 f 2 2 2 2 2 2 2 2 2 2 . 
+        f 2 2 f 2 2 2 2 . . 2 2 2 2 2 . 
+        . f 2 f 2 f 2 f . . . f 2 f . . 
+        `, SpriteKind.Enemy)
+    mySprite3.y = 100
+    mySprite3.follow(mySprite, 30)
+})
+game.onUpdateInterval(2000, function () {
+    mySprite2 = sprites.create(img`
+        . f . . 2 2 2 2 2 . . f . . . . 
+        . f f 2 2 2 2 2 2 2 f f . . . . 
+        . f e 2 2 2 2 e 2 2 2 f . . f . 
+        . 2 2 e 2 2 e 2 2 2 2 2 . . f f 
+        . 2 f 5 2 2 f 5 2 2 2 2 . . 2 . 
+        2 2 5 5 2 2 5 5 2 2 2 2 . . 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 . . . 2 
+        2 2 2 f f f f f 2 2 2 . . . . 2 
+        . 2 f f f f f f f 2 2 . . . 2 2 
+        . . 2 2 2 2 2 2 f 2 2 2 . 2 2 . 
+        . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+        . 2 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+        2 2 2 2 f 2 2 2 2 2 2 2 2 2 2 . 
+        f 2 2 f 2 2 2 2 . . 2 2 2 2 2 . 
+        . f 2 f 2 f 2 f . . . f 2 f . . 
+        `, SpriteKind.Enemy)
+    mySprite3.y = 100
+    mySprite2.follow(mySprite, 30)
+})
+game.onUpdateInterval(10000, function () {
+    mySprite4 = sprites.create(img`
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . c c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c c c c 4 c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c c c c 4 c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c f 2 f 4 f 2 f c . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c 2 c c 4 c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c 2 c c 4 c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c 2 c c 4 c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c c 2 c 4 c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . c c c c c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . d d d d d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . c c d d d d d d d d d d d c c . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . c c c d d d f f 2 d d d d d c c c . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . c c c c d f f d d 2 f d f d d c c c c . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . c c c c d f d d d f f d f d d c c c c . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . c c c c d d 2 2 f f 2 f 2 d d c c c c . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . c c c c c d d d f f 2 d f d d d c c c c . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . c 2 2 c c d d d d d 2 f d d d d c 2 c 2 . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . 2 c c c d d d f f f f d d d d c 2 2 f . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . f 2 c . d f f d d 2 d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . d d d d d 2 d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . e e e e e e e e e e e . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . d d d d d d d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d d d d d d d d d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . d d d d d d d d d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . d d d f d d d d d d d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . d d f f d d d d d d d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . d d d d d d d d d d d d f d d . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . d d d d d d d d d d d d f f d . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . d d d d d d d d d d d d f d d . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . d d d d d d d d d d d d d d d . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c f c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c f c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c c c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c c f c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . c c c c c . . . c f f c c . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . c c c c c c c . . . c c c c c c c . . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . c c c c c c c c . . . c c c c c c c c . . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . c c c c c c c c . . . . . c c c c c c c c . . . . . . . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    mySprite4.y = 80
+    mySprite4.follow(mySprite, 10)
+})

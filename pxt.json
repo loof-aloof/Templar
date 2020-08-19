@@ -1,5 +1,5 @@
 {
-    "name": "Looftwaffe",
+    "name": "Templar",
     "description": "",
     "dependencies": {
         "device": "*"
@@ -9,7 +9,8 @@
         "main.ts",
         "README.md",
         "tilemap.g.jres",
-        "tilemap.g.ts"
+        "tilemap.g.ts",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
