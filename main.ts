@@ -175,7 +175,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     if (controller.B.isPressed()) {
         otherSprite.x += 40
     }
-    if (false) {
+    if (!(controller.A.isPressed()) && !(controller.B.isPressed())) {
         otherSprite.x += 40
         info.changeLifeBy(-1)
     }
@@ -183,7 +183,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let mySprite4: Sprite = null
 let mySprite: Sprite = null
 info.setScore(0)
-info.setLife(8)
+info.setLife(4)
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b 1 . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b 1 . . . . . . . . . . . . . . 
@@ -329,8 +329,6 @@ let mySprite3 = sprites.create(img`
     `, SpriteKind.Enemy)
 mySprite.setPosition(7, 80)
 mySprite4.y = 80
-mySprite3.x = 200
-mySprite2.x = 200
 mySprite2.follow(mySprite, 30)
 mySprite3.follow(mySprite, 30)
 mySprite4.follow(mySprite, 10)
@@ -353,7 +351,7 @@ game.onUpdateInterval(5000, function () {
         f 2 2 f 2 2 2 2 . . 2 2 2 2 2 . 
         . f 2 f 2 f 2 f . . . f 2 f . . 
         `, SpriteKind.Enemy)
-    mySprite3.y = 100
+    mySprite3.setPosition(200, 80)
     mySprite3.follow(mySprite, 30)
 })
 game.onUpdateInterval(2000, function () {
@@ -375,7 +373,7 @@ game.onUpdateInterval(2000, function () {
         f 2 2 f 2 2 2 2 . . 2 2 2 2 2 . 
         . f 2 f 2 f 2 f . . . f 2 f . . 
         `, SpriteKind.Enemy)
-    mySprite3.y = 100
+    mySprite2.setPosition(200, 80)
     mySprite2.follow(mySprite, 30)
 })
 game.onUpdateInterval(10000, function () {
@@ -432,6 +430,6 @@ game.onUpdateInterval(10000, function () {
         . . . . . . . . c c c c c c c c . . . . . c c c c c c c c . . . . . . . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    mySprite4.y = 80
+    mySprite4.setPosition(200, 80)
     mySprite4.follow(mySprite, 10)
 })
